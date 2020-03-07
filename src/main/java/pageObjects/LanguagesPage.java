@@ -21,8 +21,8 @@ public class LanguagesPage {
         driver.findElement(addButton).click();
     }
 
-    public void addLanguage(By by){
-        driver.findElement(by).click();
+    public void addLanguage(String language){
+        driver.findElement(By.xpath("//*[@text = '" + language + "']")).click();
     }
 
     public void goBack(){
@@ -45,7 +45,7 @@ public class LanguagesPage {
         return headerLanguagesPage;
     }
 
-    public By getRussian() {
-        return russian;
+    public MobileElement getLanguage(String language) {
+        return driver.findElement(By.xpath("//*[@text = '" + language + "']"));
     }
 }

@@ -1,13 +1,15 @@
 package pageObjectTests;
 
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.*;
 
 public class CheckVersionAppTest extends Common {
 
+    @Parameters({"version"})
     @Test
-    public void CheckVersionApp(){
+    public void CheckVersionApp(String version){
         OnboadringPage onboadringPage = new OnboadringPage(driver);
         onboadringPage.skipOnboarding();
         HomePage homePage = new HomePage(driver);
@@ -20,6 +22,6 @@ public class CheckVersionAppTest extends Common {
         waitElementPresent(about.getVersionElement(), 5);
         String versionApp = about.getVersion();
         about.backToHomePage();
-        Assert.assertEquals(versionApp, "2.7.50278-r-2019-12-12");
+        Assert.assertEquals(versionApp, version);
     }
 }
