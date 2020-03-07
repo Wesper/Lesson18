@@ -1,6 +1,9 @@
 package pageObjectTests;
 
-import org.testng.Assert;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Flaky;
 import org.testng.annotations.Test;
 import pageObjects.Common;
 import pageObjects.HomePage;
@@ -11,6 +14,10 @@ public class SearchGoogleChromeTest extends Common {
 
     String text = "Google Chrome";
 
+    @Flaky
+    @Epic(value = "Подключение аллюра")
+    @Feature(value = "Проверка функционала поиска")
+    @Description(value = "Поиск статьи")
     @Test
     public void searchGoogleChrome(){
         OnboadringPage onboadringPage = new OnboadringPage(driver);

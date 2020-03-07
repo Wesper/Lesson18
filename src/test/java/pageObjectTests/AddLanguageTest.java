@@ -1,5 +1,6 @@
 package pageObjectTests;
 
+import io.qameta.allure.*;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pageObjects.Common;
@@ -15,7 +16,13 @@ public class AddLanguageTest extends Common {
         };
     }
 
+    @Issue(value = "A-1")
+    @TmsLink(value = "Test-1")
+    @Epic(value = "Подключение аллюра")
+    @Feature(value = "Проверка страницы онбординга")
+    @Description(value = "Добавление языка на странице онбординга")
     @Test(dataProvider = "languages")
+    @Link(value = "https://wikipedia.org")
     public void AddLanguage(String actual, String expected){
         OnboadringPage onboadringPage = new OnboadringPage(driver);
         onboadringPage.openAddLanguage();
