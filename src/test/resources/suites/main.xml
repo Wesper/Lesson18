@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM 'http://testng.org/testng-1.0.dtd'>
+<suite name = "Main suite" verbose = "1">
+    <test name="Main test">
+<!--        <packages>-->
+<!--            <package name="pageObjectTests"/>-->
+<!--        </packages>-->
+        <classes>
+            <class name="pageObjectTests.SearchGoogleChromeTest"/>
+        </classes>
+    </test>
+</suite>
