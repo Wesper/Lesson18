@@ -3,30 +3,30 @@ package pageObjects;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
+import utils.DriverManager;
 
-public class LanguagesPage {
+public class LanguagesPage extends CommonPage{
 
-    AppiumDriver<MobileElement> driver;
     By addButton = By.xpath("//*[@text = 'ADD LANGUAGE']");
     By backButton = By.className("android.widget.ImageButton");
     By headerLanguages = By.xpath("//*[@text = 'Add a language']");
     By headerLanguagesPage = By.xpath("//*[@text = 'Wikipedia languages']");
     By russian = By.xpath("//*[@text = 'Русский']");
 
-    public LanguagesPage(AppiumDriver<MobileElement> driver){
-        this.driver = driver;
-    }
-
     public void openLanguagesList(){
-        driver.findElement(addButton).click();
+        DriverManager.getDriver().findElement(addButton).click();
     }
 
     public void addLanguage(String language){
-        driver.findElement(By.xpath("//*[@text = '" + language + "']")).click();
+        DriverManager.getDriver().findElement(By.xpath("//*[@text = '" + language + "']")).click();
+    }
+
+    public MobileElement getLanguage(String language) {
+        return DriverManager.getDriver().findElement(By.xpath("//*[@text = '" + language + "']"));
     }
 
     public void goBack(){
-        driver.findElement(backButton).click();
+        DriverManager.getDriver().findElement(backButton).click();
     }
 
     public By getAddButton() {
@@ -43,9 +43,5 @@ public class LanguagesPage {
 
     public By getHeaderLanguagesPage() {
         return headerLanguagesPage;
-    }
-
-    public MobileElement getLanguage(String language) {
-        return driver.findElement(By.xpath("//*[@text = '" + language + "']"));
     }
 }

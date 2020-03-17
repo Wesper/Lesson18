@@ -1,33 +1,27 @@
 package pageObjects;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
+import utils.DriverManager;
 
-public class BurgerPage {
+public class BurgerPage extends CommonPage{
 
-    AppiumDriver<MobileElement> driver;
     By settings = By.xpath("//*[@text = 'Settings']");
     By customizeFeed = By.xpath("//*[@text = 'Customize the feed']");
     By support = By.xpath("//*[@text = 'Support Wikipedia']");
     By about = By.xpath("//*[@text = 'About']");
     By help = By.xpath("//*[@text = 'Help']");
 
-    public BurgerPage(AppiumDriver<MobileElement> driver){
-        this.driver = driver;
-    }
-
     public void openCustomizeFeed(){
-        driver.findElement(customizeFeed).click();
+        DriverManager.getDriver().findElement(customizeFeed).click();
     }
     public void openSupport(){
-        driver.findElement(support).click();
+        DriverManager.getDriver().findElement(support).click();
     }
     public void openAbout(){
-        driver.findElement(about).click();
+        DriverManager.getDriver().findElement(about).click();
     }
     public void openHelp(){
-        driver.findElement(help).click();
+        DriverManager.getDriver().findElement(help).click();
     }
 
     public By getSettings() {

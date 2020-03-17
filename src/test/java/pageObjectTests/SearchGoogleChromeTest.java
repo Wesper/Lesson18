@@ -5,12 +5,12 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Flaky;
 import org.testng.annotations.Test;
-import pageObjects.Common;
+import common.CommonTest;
 import pageObjects.HomePage;
 import pageObjects.OnboadringPage;
 import pageObjects.SearchPage;
 
-public class SearchGoogleChromeTest extends Common {
+public class SearchGoogleChromeTest extends CommonTest {
 
     String text = "Google Chrome";
 
@@ -20,13 +20,13 @@ public class SearchGoogleChromeTest extends Common {
     @Description(value = "Поиск статьи")
     @Test
     public void searchGoogleChrome(){
-        OnboadringPage onboadringPage = new OnboadringPage(driver);
+        OnboadringPage onboadringPage = new OnboadringPage();
         onboadringPage.skipOnboarding();
-        HomePage homePage = new HomePage(driver);
-        waitElementPresent(homePage.getSearchInput(), 5);
+        HomePage homePage = new HomePage();
+        homePage.waitElementPresent(homePage.getSearchInput(), 5);
         homePage.openSearchPage();
-        SearchPage searchPage = new SearchPage(driver);
-        waitElementPresent(searchPage.getSearchInput(), 10);
+        SearchPage searchPage = new SearchPage();
+        searchPage.waitElementPresent(searchPage.getSearchInput(), 10);
         searchPage.searchText(text);
         Boolean mark = searchPage.checkAvailabilityElementInTop(text);
         mark.equals(true);

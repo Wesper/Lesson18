@@ -3,11 +3,12 @@ package pageObjectTests;
 import io.qameta.allure.*;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pageObjects.Common;
+import common.CommonTest;
 import pageObjects.LanguagesPage;
 import pageObjects.OnboadringPage;
+import utils.DriverManager;
 
-public class AddLanguageTest extends Common {
+public class AddLanguageTest extends CommonTest {
 
     @DataProvider
     public Object[][] languages() {
@@ -24,13 +25,14 @@ public class AddLanguageTest extends Common {
     @Test(dataProvider = "languages")
     @Link(value = "https://wikipedia.org")
     public void AddLanguage(String actual, String expected){
-        OnboadringPage onboadringPage = new OnboadringPage(driver);
+        OnboadringPage onboadringPage = new OnboadringPage();
         onboadringPage.openAddLanguage();
-        LanguagesPage languagesPage = new LanguagesPage(driver);
-        waitElementPresent(languagesPage.getHeaderLanguagesPage(), 10);
+        LanguagesPage languagesPage = new LanguagesPage();
+        languagesPage.waitElementPresent(languagesPage.getHeaderLanguagesPage(), 10);
         languagesPage.openLanguagesList();
-        waitElementPresent(languagesPage.getHeaderLanguages(), 10);
+        languagesPage.waitElementPresent(languagesPage.getHeaderLanguages(), 10);
         languagesPage.addLanguage(actual);
+        languagesPage.waitElementPresent(languagesPage.getHeaderLanguages(), 10);
         languagesPage.getLanguage(expected).isDisplayed();
     }
 }
