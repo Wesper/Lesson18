@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import common.CommonTest;
 import pageObjects.LanguagesPage;
 import pageObjects.OnboadringPage;
-import utils.DriverManager;
 
 public class AddLanguageTest extends CommonTest {
 
