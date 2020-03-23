@@ -1,3 +1,7 @@
 target
 .idea
 allure-results
+.gradle
+/build
+out
+gradle
