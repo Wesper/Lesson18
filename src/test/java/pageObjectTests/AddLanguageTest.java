@@ -32,7 +32,7 @@ public class AddLanguageTest extends CommonTest {
         languagesPage.openLanguagesList();
         languagesPage.waitElementPresent(languagesPage.getHeaderLanguages(), 10);
         languagesPage.addLanguage(actual);
-        languagesPage.waitElementPresent(languagesPage.getHeaderLanguages(), 10);
+        languagesPage.waitElementPresent(languagesPage.getHeaderLanguagesPage(), 10);
         languagesPage.getLanguage(expected).isDisplayed();
     }
 }
