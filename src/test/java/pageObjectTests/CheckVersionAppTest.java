@@ -17,15 +17,15 @@ public class CheckVersionAppTest extends CommonTest {
     @Parameters({"version"})
     @Test
     public void CheckVersionApp(String version){
-        OnboadringPage onboadringPage = new OnboadringPage();
+        onboadringPage = new OnboadringPage();
         onboadringPage.skipOnboarding();
-        HomePage homePage = new HomePage();
+        homePage = new HomePage();
         homePage.waitElementPresent(homePage.getBurger(), 5);
         homePage.openBurger();
-        BurgerPage burgerPage = new BurgerPage();
+        burgerPage = new BurgerPage();
         burgerPage.waitElementPresent(burgerPage.getAbout(), 5);
         burgerPage.openAbout();
-        AboutPage aboutPage = new AboutPage();
+        aboutPage = new AboutPage();
         aboutPage.waitElementPresent(aboutPage.getVersionElement(), 5);
         String versionApp = aboutPage.getVersion();
         aboutPage.backToHomePage();

@@ -5,7 +5,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import common.CommonTest;
 import pageObjects.LanguagesPage;
-import pageObjects.OnboadringPage;
 
 public class AddLanguageTest extends CommonTest {
 
@@ -24,9 +23,8 @@ public class AddLanguageTest extends CommonTest {
     @Test(dataProvider = "languages")
     @Link(value = "https://wikipedia.org")
     public void AddLanguage(String actual, String expected){
-        OnboadringPage onboadringPage = new OnboadringPage();
         onboadringPage.openAddLanguage();
-        LanguagesPage languagesPage = new LanguagesPage();
+        languagesPage = new LanguagesPage();
         languagesPage.waitElementPresent(languagesPage.getHeaderLanguagesPage(), 10);
         languagesPage.openLanguagesList();
         languagesPage.waitElementPresent(languagesPage.getHeaderLanguages(), 10);

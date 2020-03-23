@@ -12,7 +12,7 @@ import pageObjects.SearchPage;
 
 public class SearchGoogleChromeTest extends CommonTest {
 
-    String text = "Google Chrome";
+    final String text = "Google Chrome";
 
     @Flaky
     @Epic(value = "Подключение аллюра")
@@ -20,12 +20,12 @@ public class SearchGoogleChromeTest extends CommonTest {
     @Description(value = "Поиск статьи")
     @Test
     public void searchGoogleChrome(){
-        OnboadringPage onboadringPage = new OnboadringPage();
+        onboadringPage = new OnboadringPage();
         onboadringPage.skipOnboarding();
-        HomePage homePage = new HomePage();
+        homePage = new HomePage();
         homePage.waitElementPresent(homePage.getSearchInput(), 5);
         homePage.openSearchPage();
-        SearchPage searchPage = new SearchPage();
+        searchPage = new SearchPage();
         searchPage.waitElementPresent(searchPage.getSearchInput(), 10);
         searchPage.searchText(text);
         Boolean mark = searchPage.checkAvailabilityElementInTop(text);

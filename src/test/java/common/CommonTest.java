@@ -1,35 +1,44 @@
 package common;
 
-import io.appium.java_client.remote.AndroidMobileCapabilityType;
-import io.appium.java_client.remote.MobileCapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import pageObjects.*;
 import utils.DriverManager;
 
-import java.io.File;
 import java.net.MalformedURLException;
-import java.net.URL;
 
 public class CommonTest {
 
-    private File app = new File("src/test/resources/apps/wiki.apk");
+    public AboutPage aboutPage;
+    public BurgerPage burgerPage;
+    public HomePage homePage;
+    public LanguagesPage languagesPage;
+    public OnboadringPage onboadringPage;
+    public SearchPage searchPage;
+
+    public void init() throws MalformedURLException {
+        DriverManager.initializeDriver();
+        this.aboutPage = new AboutPage();
+        this.burgerPage = new BurgerPage();
+        this.homePage = new HomePage();
+        this.languagesPage = new LanguagesPage();
+        this.onboadringPage = new OnboadringPage();
+        this.searchPage = new SearchPage();
+
+    }
+
+    public static void closeDriver() {
+        DriverManager.getDriver().quit();
+    }
 
     @BeforeClass
     public void setUp() throws MalformedURLException {
-        DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-        caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10.0");
-        caps.setCapability(MobileCapabilityType.DEVICE_NAME, "Nexus_10");
-        caps.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "org.wikipedia");
-        caps.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "org.wikipedia.main.MainActivity");
-        caps.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
-        URL appiumURL = new URL("http://127.0.0.1:4723/wd/hub");
-        DriverManager.initializeDriver(appiumURL, caps);
+        init();
     }
 
     @AfterClass
-    public void  tearDown() {
-        DriverManager.getDriver().quit();
+    public void tearDown(){
+        CommonTest.closeDriver();
     }
 
 }
