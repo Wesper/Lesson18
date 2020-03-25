@@ -1,5 +1,8 @@
 <!DOCTYPE suite SYSTEM 'http://testng.org/testng-1.0.dtd'>
 <suite name = "Main suite" verbose = "1">
+    <listeners>
+        <listener class-name="metrics.ExecutionListener" />
+    </listeners>
     <test name="Main test">
         <packages>
             <package name="pageObjectTests"/>
