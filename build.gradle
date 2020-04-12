@@ -26,5 +26,6 @@ dependencies {
     compile group: 'ru.yandex.qatools.allure', name: 'allure-testng-adaptor', version: '1.5.4'
     compile group: 'org.influxdb', name: 'influxdb-java', version: '2.12'
     implementation 'org.testng:testng:6.8.5'
+    implementation 'io.rest-assured:rest-assured:4.3.0'
 
 }

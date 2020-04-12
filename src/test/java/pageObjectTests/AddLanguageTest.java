@@ -24,7 +24,6 @@ public class AddLanguageTest extends CommonTest {
     @Link(value = "https://wikipedia.org")
     public void AddLanguage(String actual, String expected){
         onboadringPage.openAddLanguage();
-        languagesPage = new LanguagesPage();
         languagesPage.waitElementPresent(languagesPage.getHeaderLanguagesPage(), 10);
         languagesPage.openLanguagesList();
         languagesPage.waitElementPresent(languagesPage.getHeaderLanguages(), 10);

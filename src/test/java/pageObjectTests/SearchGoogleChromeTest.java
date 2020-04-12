@@ -20,12 +20,9 @@ public class SearchGoogleChromeTest extends CommonTest {
     @Description(value = "Поиск статьи")
     @Test
     public void searchGoogleChrome(){
-        onboadringPage = new OnboadringPage();
         onboadringPage.skipOnboarding();
-        homePage = new HomePage();
         homePage.waitElementPresent(homePage.getSearchInput(), 5);
         homePage.openSearchPage();
-        searchPage = new SearchPage();
         searchPage.waitElementPresent(searchPage.getSearchInput(), 10);
         searchPage.searchText(text);
         Boolean mark = searchPage.checkAvailabilityElementInTop(text);

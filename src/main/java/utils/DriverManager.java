@@ -15,6 +15,7 @@ public class DriverManager {
     private static AppiumDriver<MobileElement> driver;
 
     private final static File app = new File("src/test/resources/apps/wiki.apk");
+    private final static String url = "http://127.0.0.1:4723/wd/hub";
 
     private static DesiredCapabilities setCapabilitys(){
     DesiredCapabilities caps = new DesiredCapabilities();
@@ -24,11 +25,12 @@ public class DriverManager {
         caps.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "org.wikipedia");
         caps.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "org.wikipedia.main.MainActivity");
         caps.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
+        caps.setCapability("newCommandTimeout", "300000");
         return caps;
     }
 
     private static URL setUrl() throws MalformedURLException {
-        URL appiumURL = new URL("http://127.0.0.1:4723/wd/hub");
+        URL appiumURL = new URL(url);
         return appiumURL;
     }
 
@@ -38,6 +40,10 @@ public class DriverManager {
 
     public static void initializeDriver() throws MalformedURLException{
         driver = new AppiumDriver<MobileElement>(setUrl(), setCapabilitys());
+    }
+
+    public static String getUrl(){
+        return url;
     }
 
 
